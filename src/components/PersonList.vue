@@ -22,22 +22,24 @@ export default {
     };
   },
   async mounted() {
-    // usin promises
-    // fetch("https://randomuser.me/api/")
-    //   .then(response => {
-    //     return response.json();
-    //   })
-    //   .then(result => {
-    //     this.people = result.results;
-    //   });
-
-    // using async await
-    let response = await fetch("https://randomuser.me/api/");
-    let result = await response.json();
-    this.people = result.results;
+    // using promises
+    fetch("https://randomuser.me/api/?results=10")
+      .then(response => {
+        return response.json();
+      })
+      .then(result => {
+        this.people = result.results;
+      });
   }
 };
 </script>
+
+
+
+    // using async await
+    // let response = await fetch("https://randomuser.me/api/");
+    // let result = await response.json();
+    // this.people = result.results;
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
