@@ -2,6 +2,13 @@
   <div>
     <h2>In Person List</h2>
     <div v-if="people.length">
+      <!-- <div v-for="person in people" :key="person.id.value">
+      <router-link :to="'/detail/' + person.id.value">
+        <img :src="person.picture.medium" />
+        {{person.name.first}} {{person.name.last}}
+      </router-link>
+      </div>-->
+
       <div v-for="person in people" :key="person.id.value" @click="showPersonDetail(person)">
         <img :src="person.picture.medium" />
         {{person.name.first}} {{person.name.last}}
@@ -14,9 +21,7 @@
 import * as dataService from "../data-service";
 export default {
   name: "PersonList",
-  props: {
-    msg: String
-  },
+  props: {},
   data() {
     return {
       people: []
@@ -24,7 +29,10 @@ export default {
   },
   methods: {
     showPersonDetail(_person) {
-      this.$router.push({ name: "detail", params: { user: _person } });
+      this.$router.push({
+        name: "detail",
+        params: { userId: _person.id.value }
+      });
     }
   },
   async mounted() {

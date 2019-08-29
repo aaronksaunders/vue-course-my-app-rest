@@ -24,17 +24,18 @@ const routes = [
   // we have defined a name property on this specific route because we will
   // use the name when redirecting to the path
   //
-  // - we also specify the path parameter "user"
+  // - we also specify the path parameter "userId"
   // - we set the "props" to true so the router knows to expect properties
   {
-    path: "/detail/:user",
+    path: "/detail/:userId",
     name: "detail",
     component: PersonDetail,
     props: true
   }
 ];
 
-// create the VueRouter Object and provide it the routes we created above
+// create the VueRouter Object and provide it the routes we
+// created above
 const router = new VueRouter({
   routes // short for `routes: routes`
 });
@@ -47,6 +48,6 @@ Vue.use(VueRouter);
 loadAllPeople().then(() => {
   new Vue({
     render: h => h(App),
-    router // <== provides access to the global router throughout the app
+    router // <== provides global router throughout the app
   }).$mount("#app");
 });

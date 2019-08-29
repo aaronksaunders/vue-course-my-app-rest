@@ -10,15 +10,24 @@
 </template>
 
 <script>
+import * as dataService from "../data-service";
 export default {
   name: "PersonDetail",
   props: {
-    user: Object
+    userId: String
+  },
+  data() {
+    return {
+      user: {}
+    };
   },
   methods: {
     goBack: function() {
       this.$router.go(-1);
     }
+  },
+  created() {
+    this.user = dataService.getPersonById(this.userId);
   }
 };
 </script>
