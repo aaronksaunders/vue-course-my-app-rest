@@ -11,7 +11,10 @@
 </template>
 
 <script>
-import * as dataService from "../data-service";
+// import function loadAllPeople & getPersonById
+// from data-service
+import { loadAllPeople, getPersonById } from "../data-service";
+
 export default {
   name: "PersonList",
   props: {
@@ -23,12 +26,16 @@ export default {
     };
   },
   methods: {
-    showPersonDetail(_person) {
-      this.$router.push({ name: "detail", params: { user: _person } });
+    showPersonDetail: function(_person) {
+      let person = getPersonById(_person.id.value);
+      alert(person.name.first + " " + person.name.last);
     }
   },
-  async mounted() {
-    this.people = dataService.getAllPeople();
+  mounted() {
+    // using dataService without dot notation
+    loadAllPeople().then(_people => {
+      this.people = _people;
+    });
   }
 };
 </script>
