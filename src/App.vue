@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <ion-app>
+      <router-view></router-view>
+    </ion-app>
   </div>
 </template>
 

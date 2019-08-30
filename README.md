@@ -27,3 +27,11 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## installing Ionic
+
+```
+npm install @ionic/vue@0.0.9 --save
+npm install @ionic/core --save
+```

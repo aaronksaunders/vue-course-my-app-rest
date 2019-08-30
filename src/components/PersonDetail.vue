@@ -1,12 +1,22 @@
 <template>
-  <div>
-    <div>A Person Detail</div>
-    <p>{{user.email}}</p>
-    <div>
-      <img :src="user.picture.large" />
-    </div>
-    <button @click="goBack">GO BACK</button>
-  </div>
+  <ion-page>
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Vue Class - Ionic - Person Detail</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content padding>
+      <ion-card style="max-width: 300px">
+        <img :src="user.picture.large" />
+        <ion-card-content>
+            <h1>{{user.name.first}} {{user.name.last}}</h1>
+            <h2>{{user.location.city}}, {{user.location.state}}</h2>
+            <h3>{{user.email}}</h3>
+        </ion-card-content>
+      </ion-card>
+      <ion-button @click="goBack">GO BACK</ion-button>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script>
