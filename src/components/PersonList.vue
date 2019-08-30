@@ -1,20 +1,33 @@
 <template>
-  <div>
-    <h2>In Person List</h2>
-    <div v-if="people.length">
-      <!-- <div v-for="person in people" :key="person.id.value">
+  <ion-page>
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Vue Class - Ionic - In Person List</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content  >
+      <div v-if="people.length" style="padding-left:0px; padding-right: 8px">
+        <!-- 
+          <div v-for="person in people" :key="person.id.value">
       <router-link :to="'/detail/' + person.id.value">
         <img :src="person.picture.medium" />
         {{person.name.first}} {{person.name.last}}
       </router-link>
-      </div>-->
+        </div>
+        -->
 
-      <div v-for="person in people" :key="person.id.value" @click="showPersonDetail(person)">
-        <img :src="person.picture.medium" />
-        {{person.name.first}} {{person.name.last}}
+        <ion-item v-for="person in people" :key="person.id.value" @click="showPersonDetail(person)">
+          <ion-avatar slot="start">
+            <img :src="person.picture.medium" />
+          </ion-avatar>
+          <ion-label>
+            <h1>{{person.name.first}} {{person.name.last}}</h1>
+            <h2>{{person.email}}</h2>
+          </ion-label>
+        </ion-item>
       </div>
-    </div>
-  </div>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script>
