@@ -17,8 +17,6 @@ Vue.config.productionTip = false;
 
 // define all of the routes or paths that are used by the application
 const routes = [
-  // this defines the default route of the application
-  { path: "/", component: PersonList },
 
   // this defines the path detail, which will render the PersonDetail Component.
   // we have defined a name property on this specific route because we will
@@ -31,7 +29,9 @@ const routes = [
     name: "detail",
     component: PersonDetail,
     props: true
-  }
+  },
+    // this defines the default route of the application
+    { path: "/", component: PersonList },
 ];
 
 // create the VueRouter Object and provide it the routes we
