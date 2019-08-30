@@ -2,7 +2,14 @@
   <div>
     <h2>In Person List</h2>
     <div v-if="people.length">
-      <div v-for="person in people" :key="person.id.value">
+      <!-- <div v-for="person in people" :key="person.id.value">
+      <router-link :to="'/detail/' + person.id.value">
+        <img :src="person.picture.medium" />
+        {{person.name.first}} {{person.name.last}}
+      </router-link>
+      </div>-->
+
+      <div v-for="person in people" :key="person.id.value" @click="showPersonDetail(person)">
         <img :src="person.picture.medium" />
         {{person.name.first}} {{person.name.last}}
       </div>
@@ -11,30 +18,25 @@
 </template>
 
 <script>
+import * as dataService from "../data-service";
 export default {
   name: "PersonList",
-  props: {
-    msg: String
-  },
+  props: {},
   data() {
     return {
       people: []
     };
   },
+  methods: {
+    showPersonDetail(_person) {
+      this.$router.push({
+        name: "detail",
+        params: { userId: _person.id.value }
+      });
+    }
+  },
   async mounted() {
-    // usin promises
-    // fetch("https://randomuser.me/api/")
-    //   .then(response => {
-    //     return response.json();
-    //   })
-    //   .then(result => {
-    //     this.people = result.results;
-    //   });
-
-    // using async await
-    let response = await fetch("https://randomuser.me/api/");
-    let result = await response.json();
-    this.people = result.results;
+    this.people = dataService.getAllPeople();
   }
 };
 </script>
